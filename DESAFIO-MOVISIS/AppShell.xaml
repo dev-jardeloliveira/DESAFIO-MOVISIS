@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DESAFIO_MOVISIS.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:page="clr-namespace:DESAFIO_MOVISIS.Pages"
+    Title="DESAFIO_MOVISIS"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent ContentTemplate="{DataTemplate page:AutenticarPage}" Route="autenticar" />
+    <ShellContent ContentTemplate="{DataTemplate page:IniciarPage}" Route="iniciar" />
+
+</Shell>

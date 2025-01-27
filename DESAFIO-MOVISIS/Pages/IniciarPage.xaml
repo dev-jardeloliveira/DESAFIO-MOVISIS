@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DESAFIO_MOVISIS.Pages.IniciarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Plugin.Maui.Calendar.Controls;assembly=Plugin.Maui.Calendar"
+    xmlns:vm="clr-namespace:DESAFIO_MOVISIS.ViewModels"
+    x:DataType="vm:IniciarViewModel">
+    <VerticalStackLayout>
+
+
+        <controls:Calendar
+            AnimateCalendar="True"
+            CalendarLayout="Week"
+            Culture="{Binding Cultura}"
+            Day="{Binding DataHoraAtual.Day}"
+            HorizontalOptions="Fill"
+            Month="{Binding DataHoraAtual.Month}"
+            VerticalOptions="Fill"
+            Year="{Binding DataHoraAtual.Year}">
+
+            <controls:Calendar.HeaderSectionTemplate>
+                <DataTemplate>
+
+                    <Grid
+                        Padding="10"
+                        BackgroundColor="White"
+                        ColumnSpacing="10">
+                        <Label
+                            FontSize="25"
+                            HorizontalOptions="Center"
+                            Text="{Binding DataHoraAtual.Date.Month}"
+                            TextColor="{StaticResource Gray600}"
+                            VerticalOptions="Center" />
+
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding PreviousMonthCommand}"
+                            HorizontalOptions="Start"
+                            Text="ANTERIOR"
+                            TextColor="{StaticResource Gray400}"
+                            VerticalOptions="Center" />
+
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding ProximaSemanaCommand}"
+                            HorizontalOptions="End"
+                            Text="PRÓXIMO"
+                            TextColor="{StaticResource Gray400}"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </controls:Calendar.HeaderSectionTemplate>
+        </controls:Calendar>
+
+    </VerticalStackLayout>
+</ContentPage>

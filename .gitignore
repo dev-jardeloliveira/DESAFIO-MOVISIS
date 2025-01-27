@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/DESAFIO-MOVISIS/bin/Debug/net8.0-android
+/DESAFIO-MOVISIS/obj
+/DESAFIO-MOVISIS/.vs/DESAFIO-MOVISIS/FileContentIndex

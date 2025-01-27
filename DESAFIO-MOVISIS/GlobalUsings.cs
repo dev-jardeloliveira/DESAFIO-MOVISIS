@@ -1,0 +1,26 @@
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using Microsoft.Extensions.Logging;
+global using CommunityToolkit.Mvvm;
+global using CommunityToolkit.Maui.Alerts;
+global using CommunityToolkit.Maui.Core;
+global using System.Text.RegularExpressions;
+global using System.Windows.Input;
+global using System.Linq.Expressions;
+global using SQLite;
+global using CommunityToolkit.Maui;
+global using Plugin.Maui.Biometric;
+global using CommunityToolkit.Maui.Views;
+global using Plugin.Maui.Calendar;
+global using System.Globalization;
+
+global using DESAFIO_MOVISIS.ViewModels;
+global using DESAFIO_MOVISIS.Pages;
+global using DESAFIO_MOVISIS.Extensions;
+global using DESAFIO_MOVISIS.Models;
+global using DESAFIO_MOVISIS.Util;
+global using DESAFIO_MOVISIS.DataStores.Models;
+global using DESAFIO_MOVISIS.DataStore;
+global using DESAFIO_MOVISIS.ViewModels.ModelsDto;
+global using DESAFIO_MOVISIS.ViewModels.Mapper;
+global using DESAFIO_MOVISIS.Components;

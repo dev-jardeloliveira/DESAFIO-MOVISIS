@@ -1,0 +1,152 @@
+<ContentPage
+    x:Class="DESAFIO_MOVISIS.Pages.AutenticarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:DESAFIO_MOVISIS.Behaviors"
+    xmlns:component="clr-namespace:DESAFIO_MOVISIS.Components"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:DESAFIO_MOVISIS.ViewModels"
+    x:DataType="vm:AutenticarViewModel"
+    BackgroundColor="{StaticResource White}">
+
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource Error}" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource Gray600}" />
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        </Style>
+
+        <Style TargetType="Border">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="40" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="StrokeThickness" Value="0" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout
+            Padding="20"
+            HorizontalOptions="FillAndExpand"
+            Spacing="20"
+            VerticalOptions="CenterAndExpand">
+
+            <Image
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="movisis" />
+
+            <Border>
+                <Entry
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    SemanticProperties.Description="Email"
+                    Text="{Binding AutenticarUsuario.Email}">
+                    <Entry.Behaviors>
+                        <toolkit:EmailValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}" />
+                        <toolkit:TextValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            MaximumLength="100"
+                            MinimumLength="6"
+                            ValidStyle="{StaticResource ValidEntryStyle}" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+
+            <VerticalStackLayout>
+                <Border>
+                    <Entry
+                        x:Name="Senha"
+                        IsPassword="True"
+                        Placeholder="Senha"
+                        SemanticProperties.Description="Senha"
+                        Text="{Binding AutenticarUsuario.Senha}">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior
+                                Flags="ValidateOnValueChanged"
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                MaximumLength="20"
+                                MinimumLength="6"
+                                ValidStyle="{StaticResource ValidEntryStyle}" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </Border>
+                <Label
+                    FontSize="Small"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsMsgErro}"
+                    Text="{Binding MsgErroSenha}"
+                    TextColor="{StaticResource Error}" />
+            </VerticalStackLayout>
+
+
+            <Border IsVisible="{Binding IsEntryVisible}">
+                <Border.Behaviors>
+                    <toolkit:AnimationBehavior AnimateCommand="{Binding AnimacaoCommand}">
+                        <toolkit:AnimationBehavior.AnimationType>
+                            <toolkit:FadeAnimation Opacity="0.2" />
+                        </toolkit:AnimationBehavior.AnimationType>
+                    </toolkit:AnimationBehavior>
+                </Border.Behaviors>
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Digite novamente a senha"
+                    SemanticProperties.Description="Confirmação de Senha"
+                    Text="{Binding AutenticarUsuario.ConfirmarSenha}">
+                    <Entry.Behaviors>
+                        <behaviors:CompararCamposBehavior CompareToEntry="{x:Reference Senha}" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+
+            <Button
+                BackgroundColor="{StaticResource Primary}"
+                Command="{Binding EntrarOuCadastrarCommand}"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{Binding TxtButton}"
+                TextColor="White" />
+
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding TxtCadastrar}"
+                TextColor="{StaticResource Primary}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AlternarFraseReSenhaCadastroCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label
+                Margin="0,50,0,0"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="Esqueceu a senha?"
+                TextColor="{StaticResource Gray400}"
+                VerticalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EsqueceuSenhaCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
