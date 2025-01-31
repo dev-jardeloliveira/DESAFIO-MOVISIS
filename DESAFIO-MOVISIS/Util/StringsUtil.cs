@@ -12,6 +12,8 @@ public class StringsUtil
     public const string ErroCampos = "Preencha os campos email e senha corretamente!";
     public const string ErroCampoSenha = "Senha não confere.";
     public const string CadastradoSucesso = "Cadastrado com sucesso!";
+    public const string SalvoSucesso = "Salvo com sucesso!";
+    public const string SalvoErro = "Não foi possivel salvar. Verifique os dados digitado e tente novamente.";
     public const string Sucesso = "Sucesso!";
     public const string Entendi = "Entendi";
 }

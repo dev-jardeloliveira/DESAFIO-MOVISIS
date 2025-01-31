@@ -3,12 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\desafio-movisis\\pages\\iniciarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|solutionrelative:pages\\iniciarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0CDFBD61-DB22-4A6D-8893-76FADAE8687A}|..\\Negocio-Api\\Negocio-Api.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\negocio-api\\casodeuso\\lembretecasouso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\desafio-movisis\\viewmodels\\iniciarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|solutionrelative:viewmodels\\iniciarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CDFBD61-DB22-4A6D-8893-76FADAE8687A}|..\\Negocio-Api\\Negocio-Api.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\negocio-api\\casodeuso\\usuariocasouso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -37,29 +35,33 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IniciarViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\IniciarViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\IniciarViewModel.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\IniciarViewModel.cs",
-              "RelativeToolTip": "ViewModels\\IniciarViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
+              "Title": "UsuarioCasoUso.cs",
+              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Negocio-Api\\CasoDeUso\\UsuarioCasoUso.cs",
+              "RelativeDocumentMoniker": "..\\Negocio-Api\\CasoDeUso\\UsuarioCasoUso.cs",
+              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Negocio-Api\\CasoDeUso\\UsuarioCasoUso.cs",
+              "RelativeToolTip": "..\\Negocio-Api\\CasoDeUso\\UsuarioCasoUso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T21:04:35.854Z",
+              "WhenOpened": "2025-01-31T18:11:11.074Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IniciarPage.xaml",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\Pages\\IniciarPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\IniciarPage.xaml",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\Pages\\IniciarPage.xaml",
-              "RelativeToolTip": "Pages\\IniciarPage.xaml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-27T21:04:10.351Z",
+              "Title": "LembreteCasoUso.cs",
+              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Negocio-Api\\CasoDeUso\\LembreteCasoUso.cs",
+              "RelativeDocumentMoniker": "..\\Negocio-Api\\CasoDeUso\\LembreteCasoUso.cs",
+              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Negocio-Api\\CasoDeUso\\LembreteCasoUso.cs",
+              "RelativeToolTip": "..\\Negocio-Api\\CasoDeUso\\LembreteCasoUso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T18:10:59.455Z",
               "EditorCaption": ""
             }
           ]

@@ -4,54 +4,122 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Plugin.Maui.Calendar.Controls;assembly=Plugin.Maui.Calendar"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:DESAFIO_MOVISIS.ViewModels"
-    x:DataType="vm:IniciarViewModel">
-    <VerticalStackLayout>
+    Shell.BackgroundColor="{StaticResource Primary}"
+    Shell.ForegroundColor="{StaticResource White}"
+    Shell.NavBarHasShadow="True">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding AlternarLayoutCommand}"
+            Order="Secondary"
+            SemanticProperties.Description="Alternar calendário"
+            Text="Alternar calendário" />
+        <ToolbarItem
+            Order="Secondary"
+            SemanticProperties.Description="Sair do sistema"
+            Text="Sair" />
+    </ContentPage.ToolbarItems>
 
+    <Shell.TitleView>
+        <Label
+            FontSize="Medium"
+            HorizontalTextAlignment="Center"
+            Text="Lembrete"
+            TextColor="{StaticResource White}"
+            VerticalOptions="Center" />
+    </Shell.TitleView>
+
+    <Grid>
         <controls:Calendar
+            Grid.Row="0"
+            Padding="10"
             AnimateCalendar="True"
-            CalendarLayout="Week"
+            ArrowsBorderColor="{StaticResource Gray300}"
+            ArrowsBorderWidth="0.1"
+            CalendarLayout="{Binding LayoutWeek}"
             Culture="{Binding Cultura}"
             Day="{Binding DataHoraAtual.Day}"
+            Events="{Binding eventos}"
+            EventsScrollViewVisible="True"
+            FooterArrowVisible="False"
+            FooterSectionVisible="False"
             HorizontalOptions="Fill"
             Month="{Binding DataHoraAtual.Month}"
+            SelectedDateColor="{StaticResource Primary}"
+            ShowYearPicker="False"
+            SwipeLeftCommand="{Binding AdicionarNovoEventoCommand}"
+            TodayFillColor="{StaticResource Gray100}"
+            TodayOutlineColor="{StaticResource Transparent}"
             VerticalOptions="Fill"
+            WeekViewUnit="MonthName"
             Year="{Binding DataHoraAtual.Year}">
 
-            <controls:Calendar.HeaderSectionTemplate>
+            <controls:Calendar.EventTemplate>
                 <DataTemplate>
-
                     <Grid
+                        Margin="0,15,0,0"
                         Padding="10"
-                        BackgroundColor="White"
-                        ColumnSpacing="10">
+                        BackgroundColor="{StaticResource WhiteSmoke}"
+                        ColumnDefinitions="5,*,10"
+                        ColumnSpacing="15"
+                        HorizontalOptions="Fill"
+                        RowDefinitions="*,*,*"
+                        VerticalOptions="Fill">
+
+                        <BoxView
+                            Grid.RowSpan="3"
+                            Grid.Column="0"
+                            BackgroundColor="{StaticResource Primary}"
+                            WidthRequest="5" />
+
                         <Label
-                            FontSize="25"
-                            HorizontalOptions="Center"
-                            Text="{Binding DataHoraAtual.Date.Month}"
-                            TextColor="{StaticResource Gray600}"
-                            VerticalOptions="Center" />
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HeightRequest="15"
+                            Text="x"
+                            TextColor="{StaticResource Black}"
+                            WidthRequest="15" />
 
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding PreviousMonthCommand}"
-                            HorizontalOptions="Start"
-                            Text="ANTERIOR"
-                            TextColor="{StaticResource Gray400}"
-                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding Titulo}" />
 
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding ProximaSemanaCommand}"
-                            HorizontalOptions="End"
-                            Text="PRÓXIMO"
-                            TextColor="{StaticResource Gray400}"
-                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="Small"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding Descricao}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontSize="Small"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding Vencimento}" />
                     </Grid>
                 </DataTemplate>
-            </controls:Calendar.HeaderSectionTemplate>
+            </controls:Calendar.EventTemplate>
         </controls:Calendar>
 
-    </VerticalStackLayout>
+        <toolkit:SemanticOrderView>
+            <Button
+                Grid.Row="2"
+                Margin="10"
+                Command="{Binding AdicionarNovoEventoCommand}"
+                CornerRadius="100"
+                FontSize="Large"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Text="+"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="50" />
+        </toolkit:SemanticOrderView>
+    </Grid>
 </ContentPage>

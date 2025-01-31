@@ -3,11 +3,151 @@
     x:Class="DESAFIO_MOVISIS.Pages.CadastrarLembretePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="CadastrarLembretePage">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Cadastrar lembrete!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    xmlns:behaviors="clr-namespace:DESAFIO_MOVISIS.Behaviors"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:DESAFIO_MOVISIS.ViewModels"
+    Title="Evento"
+    x:DataType="vm:CadastrarLembreteViewModel"
+    BackgroundColor="{StaticResource White}">
+
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource Error}" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource Gray600}" />
+            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+        </Style>
+
+        <Style x:Key="border" TargetType="Border">
+            <Setter Property="Margin" Value="5,0,0,0" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WhiteSmoke}" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="40" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="StrokeThickness" Value="0" />
+        </Style>
+        <Style x:Key="label" TargetType="Label">
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="TextColor" Value="{StaticResource Gray500}" />
+            <Setter Property="FontSize" Value="Small" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            HorizontalOptions="FillAndExpand"
+            Spacing="15"
+            VerticalOptions="Fill">
+
+            <Label Style="{StaticResource label}" Text="Título *" />
+            <Border Style="{StaticResource border}">
+                <Entry
+                    Placeholder="Título"
+                    SemanticProperties.Description="Título"
+                    Text="{Binding Lembrete.Titulo}">
+                    <Entry.Behaviors>
+                        <toolkit:TextValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            MaximumLength="100"
+                            MinimumLength="3"
+                            ValidStyle="{StaticResource ValidEntryStyle}" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+
+            <Label Style="{StaticResource label}" Text="Data *" />
+            <Border Style="{StaticResource border}">
+                <DatePicker
+                    Date="{Binding Lembrete.Vencimento}"
+                    Format="dd/MM/yyyy"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <DatePicker.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="DateSelected" />
+                    </DatePicker.Behaviors>
+                </DatePicker>
+            </Border>
+
+            <Label Style="{StaticResource label}" Text="Hora *" />
+            <Border Style="{StaticResource border}">
+                <TimePicker
+                    Format="HH:mm"
+                    HorizontalOptions="Center"
+                    Time="{Binding Lembrete.Hora}"
+                    VerticalOptions="Center">
+                    <TimePicker.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="PropertyChanged" />
+                    </TimePicker.Behaviors>
+                </TimePicker>
+            </Border>
+
+            <Label Style="{StaticResource label}" Text="Descrição *" />
+            <Border BackgroundColor="{StaticResource WhiteSmoke}" Stroke="{StaticResource Transparent}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" StrokeThickness="0" />
+                </Border.StrokeShape>
+                <Editor
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    Placeholder="Descrição"
+                    SemanticProperties.Description="Descrição"
+                    Text="{Binding Lembrete.Descricao}">
+                    <Editor.Behaviors>
+                        <toolkit:TextValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            MaximumLength="500"
+                            MinimumLength="5"
+                            ValidStyle="{StaticResource ValidEntryStyle}" />
+                    </Editor.Behaviors>
+                </Editor>
+            </Border>
+
+            <Label Style="{StaticResource label}" Text="Anexar" />
+            <Border Style="{StaticResource border}">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Entry
+                        Grid.Column="0"
+                        IsReadOnly="True"
+                        Placeholder="Nome do arquivo"
+                        Text="{Binding NomeDoArquivo}" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        Command="{Binding SelecionarArquivoCommand}"
+                        CornerRadius="50"
+                        Text="Procurar" />
+                </Grid>
+            </Border>
+
+            <Button
+                Margin="0,10,0,0"
+                BackgroundColor="{StaticResource Primary}"
+                Command="{Binding SalvarLembreteCommand}"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="Salvar"
+                TextColor="White" />
+
+            <Label
+                IsVisible="{Binding IsErro}"
+                Text="* Campos obrigatórios."
+                TextColor="{StaticResource Error}" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

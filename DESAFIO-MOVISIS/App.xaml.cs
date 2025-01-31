@@ -30,6 +30,34 @@
                 handler.PlatformView.SetContentInsetsAbsolute(0, 0);
 #endif
             });
+
+            Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
+            {
+#if ANDROID
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+#elif IOS
+              
+#endif
+
+            });
+            Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
+            {
+#if ANDROID
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+#elif IOS
+              
+#endif
+
+            });
+            Microsoft.Maui.Handlers.TimePickerHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
+            {
+#if ANDROID
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+#elif IOS
+              
+#endif
+
+            });
             MainPage = new AppShell();
         }
     }

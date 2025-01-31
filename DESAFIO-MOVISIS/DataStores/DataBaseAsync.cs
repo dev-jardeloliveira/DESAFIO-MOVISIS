@@ -14,6 +14,7 @@ public class DataBaseAsync : IDataStore
         this.database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
 
         _ = await this.database.CreateTableAsync<Usuario>();
+        _ = await this.database.CreateTableAsync<Lembrete>();
     }
 
     public async Task<List<TX>> AllAsync<TX>() where TX : new()

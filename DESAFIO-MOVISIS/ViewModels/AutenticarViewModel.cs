@@ -25,13 +25,12 @@ public partial class AutenticarViewModel : ObservableObject
 
     private IBiometric biometric;
     private IDataStore dataStore;
-    private LoadingComponent loadingComponent;
+    private LoadingComponent loadingComponent= new();
 
     public AutenticarViewModel(IBiometric biometric, IDataStore dataStore)
     {
         this.biometric = biometric;
         this.dataStore = dataStore;
-        loadingComponent = new LoadingComponent();
 
         AutenticarComBiometriaAsync().ConfigureAwait(false);
     }
