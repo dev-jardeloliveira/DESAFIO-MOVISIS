@@ -2,6 +2,7 @@
 global using Microsoft.EntityFrameworkCore;
 
 global using Negocio_Api.CasoDeUso;
+global using Negocio_Api.Regras;
 
 global using Data_Api.Repositorio;
 global using Data_Api.Contexto;

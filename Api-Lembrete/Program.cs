@@ -1,8 +1,4 @@
 
-
-using Negocio_Api.CasoDeUso;
-using Negocio_Api.Regras;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,8 +8,11 @@ builder.Services.AddDbContext<DataContexto>(options =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<DataContexto>();
 builder.Services.AddScoped<UsuarioRegras>();
+builder.Services.AddScoped<LembreteRegras>();
 builder.Services.AddScoped<UsuarioCasoUso>();
+builder.Services.AddScoped<LembreteCasoUso>();
 builder.Services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddTransient<ILembreteRepositorio, LembreteRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
