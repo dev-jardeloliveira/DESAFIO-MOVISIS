@@ -2,6 +2,7 @@
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class LembretesController : ControllerBase
 {
     private readonly LembreteCasoUso casoUso;

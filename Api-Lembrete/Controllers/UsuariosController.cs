@@ -2,6 +2,7 @@
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class UsuariosController : ControllerBase
 { 
     private readonly UsuarioCasoUso casoUso;
