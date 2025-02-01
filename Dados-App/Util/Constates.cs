@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace Dados_App.Util;
+﻿namespace Dados_App.Util;
 
 public static class Constates
 {

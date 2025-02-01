@@ -17,6 +17,8 @@ global using Plugin.Maui.Calendar.Models;
 global using System.Globalization;
 global using System.Text.Json;
 global using FluentValidation;
+global using System.Security.Cryptography;
+global using System.Text;
 
 global using DESAFIO_MOVISIS.Validators;
 global using DESAFIO_MOVISIS.ViewModels;

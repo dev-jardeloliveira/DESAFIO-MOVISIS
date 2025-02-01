@@ -5,12 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\desafio-movisis\\viewmodels\\autenticarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|solutionrelative:viewmodels\\autenticarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE88EA84-3A08-47E2-B0BB-A5797A217A72}|..\\Dados-App\\Dados-App.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\dados-app\\servicos\\httpclientservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE88EA84-3A08-47E2-B0BB-A5797A217A72}|..\\Dados-App\\Dados-App.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\dados-app\\util\\constates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,41 +38,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Constates.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Util\\Constates.cs",
-              "RelativeDocumentMoniker": "..\\Dados-App\\Util\\Constates.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Util\\Constates.cs",
-              "RelativeToolTip": "..\\Dados-App\\Util\\Constates.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T18:13:57.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HttpClientServico.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Servicos\\HttpClientServico.cs",
-              "RelativeDocumentMoniker": "..\\Dados-App\\Servicos\\HttpClientServico.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Servicos\\HttpClientServico.cs",
-              "RelativeToolTip": "..\\Dados-App\\Servicos\\HttpClientServico.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:52:52.297Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AutenticarViewModel.cs",
               "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\AutenticarViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\AutenticarViewModel.cs",
               "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\AutenticarViewModel.cs",
               "RelativeToolTip": "ViewModels\\AutenticarViewModel.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAF0AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAALkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:45:59.997Z",
+              "WhenOpened": "2025-02-01T19:01:50.547Z",
               "EditorCaption": ""
             }
           ]

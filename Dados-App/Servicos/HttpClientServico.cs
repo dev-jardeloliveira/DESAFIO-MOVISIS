@@ -43,8 +43,7 @@ public class HttpClientServico : IHttpClientServico, IDisposable
         response.EnsureSuccessStatusCode();
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        var retorno = JsonSerializer.Deserialize<T>(responseContent)!;
-        return retorno;
+        return JsonSerializer.Deserialize<T>(responseContent)!;
     }
 
     public async Task<T> PutAsync<T>(string uri, object data)

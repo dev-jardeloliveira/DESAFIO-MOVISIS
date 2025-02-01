@@ -65,15 +65,8 @@ public partial class AutenticarViewModel : ObservableObject
     {
         await Task.Delay(TimeSpan.FromSeconds(5));
 
-        if(!AutenticarUsuario.Email.IsValidarEmail() || !AutenticarUsuario.Senha.IsValidarString(6))
+        if (!AutenticarUsuario.Email.IsValidarEmail() || !AutenticarUsuario.Senha.IsValidarString(6))
         {
-            AvisoSnack(StringsUtil.ErroCampos, Colors.LightCoral);
-            return;
-        }
-
-        bool isValido = AutenticarUsuario.Email.Equals("jardel@gmail.com") && AutenticarUsuario.Senha.Equals("123456");
-        if (!isValido){
-
             AvisoSnack(StringsUtil.ErroCampos, Colors.LightCoral);
             return;
         }
@@ -83,7 +76,14 @@ public partial class AutenticarViewModel : ObservableObject
         var usuario = UsuarioMapper.ToUsuario(dto);
         var dadosDeEntrada = UsuarioMapper.ToDados(usuario);
 
-        await casoUso.Verificar(dadosDeEntrada).ContinueWith(async it =>  {
+        await VerificarApi(usuario, dadosDeEntrada);
+
+    }
+
+    private async Task VerificarApi(DataStores.Models.Usuario usuario, Dados_App.Modelo.Usuario dadosDeEntrada)
+    {
+        await casoUso.Verificar(dadosDeEntrada).ContinueWith(async it =>
+        {
 
             if (it.IsCompletedSuccessfully)
             {
@@ -98,8 +98,6 @@ public partial class AutenticarViewModel : ObservableObject
                 AvisoSnack(StringsUtil.ErroCampos, Colors.LightCoral);
             }
         });
-
-       
     }
 
     [RelayCommand]
@@ -144,7 +142,7 @@ public partial class AutenticarViewModel : ObservableObject
             return;
         }
 
-        var NovoUsuario = new Dados_App.Modelo.Usuario { Id = Guid.NewGuid(), Email = AutenticarUsuario!.Email, Senha = AutenticarUsuario!.Senha };
+        var NovoUsuario = new Dados_App.Modelo.Usuario { Id = Guid.NewGuid(), Email = AutenticarUsuario!.Email, Senha = AutenticarUsuario!.Senha.Criptografar() };
 
         await casoUso.Gravar(NovoUsuario).ContinueWith(it => {
 
@@ -165,6 +163,13 @@ public partial class AutenticarViewModel : ObservableObject
     {
         await Task.Delay(TimeSpan.FromSeconds(15));
 
+        var usuario = await this.dataStore.AllAsync<DataStores.Models.Usuario>();
+
+        if (usuario?.Count() < 1)
+            return;
+
+        var usuarioCadastrado = usuario?.FirstOrDefault();
+
         var status = await BiometricAuthenticationService.Default.GetAuthenticationStatusAsync();
 
         if (!BiometricAuthenticationService.Default.IsPlatformSupported)
@@ -182,7 +187,8 @@ public partial class AutenticarViewModel : ObservableObject
 
         if (result.Status == BiometricResponseStatus.Success)
         {
-            await Shell.Current.GoToAsync("//iniciar");
+            var dadosDeEntrada = UsuarioMapper.ToDados(usuarioCadastrado);
+            await VerificarApi(usuarioCadastrado, dadosDeEntrada);
         }
       
     }
