@@ -1,9 +1,10 @@
-﻿using Dados_App.Modelo;
-
-namespace DESAFIO_MOVISIS.ViewModels;
+﻿namespace DESAFIO_MOVISIS.ViewModels;
 
 public partial class AutenticarViewModel : ObservableObject
 {
+    public ICommand? AnimacaoCommand { get; set; }
+    private IDataStore dataStore;
+    private LoadingComponent loadingComponent = new();
     private readonly UsuarioCasoUso casoUso;
 
     [ObservableProperty]
@@ -25,16 +26,10 @@ public partial class AutenticarViewModel : ObservableObject
     [ObservableProperty]
     private bool isEntryVisible = false;
 
-    public ICommand? AnimacaoCommand { get; set; }
 
-    private IBiometric biometric;
-    private IDataStore dataStore;
-    private LoadingComponent loadingComponent= new();
-
-    public AutenticarViewModel(IBiometric biometric, IDataStore dataStore, UsuarioCasoUso casoUso)
+    public AutenticarViewModel(IDataStore dataStore, UsuarioCasoUso casoUso)
     {
         this.casoUso = casoUso;
-        this.biometric = biometric;
         this.dataStore = dataStore;
 
         AutenticarComBiometriaAsync().ConfigureAwait(false);
@@ -80,7 +75,7 @@ public partial class AutenticarViewModel : ObservableObject
 
     }
 
-    private async Task VerificarApi(DataStores.Models.Usuario usuario, Dados_App.Modelo.Usuario dadosDeEntrada)
+    private async Task VerificarApi(Usuario usuario, Dados_App.Modelo.Usuario dadosDeEntrada)
     {
         await casoUso.Verificar(dadosDeEntrada).ContinueWith(async it =>
         {
@@ -89,7 +84,7 @@ public partial class AutenticarViewModel : ObservableObject
             {
                 usuario.Token = it?.Result?.token;
                 usuario.Guid = it?.Result?.id;
-                await this.dataStore.CreateUniqueAsync<DataStores.Models.Usuario>(usuario);
+                await this.dataStore.CreateUniqueAsync<Usuario>(usuario);
 
                 await Shell.Current.GoToAsync("//iniciar");
             }
@@ -163,7 +158,7 @@ public partial class AutenticarViewModel : ObservableObject
     {
         await Task.Delay(TimeSpan.FromSeconds(15));
 
-        var usuario = await this.dataStore.AllAsync<DataStores.Models.Usuario>();
+        var usuario = await this.dataStore.AllAsync<Usuario>();
 
         if (usuario?.Count() < 1)
             return;
@@ -187,8 +182,8 @@ public partial class AutenticarViewModel : ObservableObject
 
         if (result.Status == BiometricResponseStatus.Success)
         {
-            var dadosDeEntrada = UsuarioMapper.ToDados(usuarioCadastrado);
-            await VerificarApi(usuarioCadastrado, dadosDeEntrada);
+            var dadosDeEntrada = UsuarioMapper.ToDados(usuarioCadastrado!);
+            await VerificarApi(usuarioCadastrado!, dadosDeEntrada);
         }
       
     }
