@@ -13,28 +13,29 @@ public class TokenController : ControllerBase
         this.casoUso = casoUso;
     }
 
-    [HttpPost("login")]
+    [HttpPost]
     public async Task<IActionResult> Login([FromBody] Usuario usuario)
     {
         Usuario? resultado = await casoUso.Filtrar(usuario.Email!);
 
         if (usuario.Senha == resultado?.Senha)
         {
-            var token = GenerateJwtToken(usuario.Email!);
-            return Ok(new { Token = token });
+            string token = GenerateJwtToken(resultado!.Email!);
+            return Ok(new { Token = token, Id = resultado.Id });
         }
 
         return Unauthorized();
     }
 
-    private string GenerateJwtToken(string username)
+    private string GenerateJwtToken(string email)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
+            new Claim(JwtRegisteredClaimNames.Email, email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 

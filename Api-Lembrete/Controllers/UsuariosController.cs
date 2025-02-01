@@ -2,7 +2,6 @@
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class UsuariosController : ControllerBase
 { 
     private readonly UsuarioCasoUso casoUso;
@@ -25,12 +24,14 @@ public class UsuariosController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize]
     public async Task<string> Put([FromBody] Usuario usuario)
     {
         return await casoUso.Alterar(usuario);
     }
 
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<int> Delete(Guid id)
     {
         return await casoUso.Excluir(id);

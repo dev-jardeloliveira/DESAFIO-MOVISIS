@@ -7,7 +7,7 @@
     Title="DESAFIO_MOVISIS"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent ContentTemplate="{DataTemplate page:IniciarPage}" Route="iniciar" />
     <ShellContent ContentTemplate="{DataTemplate page:AutenticarPage}" Route="autenticar" />
+    <ShellContent ContentTemplate="{DataTemplate page:IniciarPage}" Route="iniciar" />
 
 </Shell>

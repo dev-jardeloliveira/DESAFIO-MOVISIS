@@ -1,7 +1,11 @@
-﻿namespace DESAFIO_MOVISIS.ViewModels;
+﻿using Dados_App.Modelo;
+
+namespace DESAFIO_MOVISIS.ViewModels;
 
 public partial class AutenticarViewModel : ObservableObject
 {
+    private readonly UsuarioCasoUso casoUso;
+
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsMsgErro))]
     private Autenticar autenticarUsuario = new();
@@ -27,8 +31,9 @@ public partial class AutenticarViewModel : ObservableObject
     private IDataStore dataStore;
     private LoadingComponent loadingComponent= new();
 
-    public AutenticarViewModel(IBiometric biometric, IDataStore dataStore)
+    public AutenticarViewModel(IBiometric biometric, IDataStore dataStore, UsuarioCasoUso casoUso)
     {
+        this.casoUso = casoUso;
         this.biometric = biometric;
         this.dataStore = dataStore;
 
@@ -58,7 +63,6 @@ public partial class AutenticarViewModel : ObservableObject
 
     private async Task VerifivarUsuario()
     {
-        //TODO - IMPLEMENTAR API AQUI
         await Task.Delay(TimeSpan.FromSeconds(5));
 
         if(!AutenticarUsuario.Email.IsValidarEmail() || !AutenticarUsuario.Senha.IsValidarString(6))
@@ -77,10 +81,25 @@ public partial class AutenticarViewModel : ObservableObject
         UsuarioDto dto = UsuarioMapper.ToDto(AutenticarUsuario);
 
         var usuario = UsuarioMapper.ToUsuario(dto);
+        var dadosDeEntrada = UsuarioMapper.ToDados(usuario);
 
-        await this.dataStore.CreateUniqueAsync<Usuario>(usuario);
+        await casoUso.Verificar(dadosDeEntrada).ContinueWith(async it =>  {
 
-        await Shell.Current.GoToAsync("//iniciar");
+            if (it.IsCompletedSuccessfully)
+            {
+                usuario.Token = it?.Result?.token;
+                usuario.Guid = it?.Result?.id;
+                await this.dataStore.CreateUniqueAsync<DataStores.Models.Usuario>(usuario);
+
+                await Shell.Current.GoToAsync("//iniciar");
+            }
+            else
+            {
+                AvisoSnack(StringsUtil.ErroCampos, Colors.LightCoral);
+            }
+        });
+
+       
     }
 
     [RelayCommand]
@@ -109,7 +128,6 @@ public partial class AutenticarViewModel : ObservableObject
 
     async Task  CadastrarUsuario()
     {
-        //TODO - IMPLEMENTAR API AQUI
         await Task.Delay(TimeSpan.FromSeconds(5));
 
         if ( !AutenticarUsuario!.Email.IsValidarEmail() || !AutenticarUsuario!.Senha.IsValidarString(6))
@@ -126,9 +144,21 @@ public partial class AutenticarViewModel : ObservableObject
             return;
         }
 
-        var NovoUsuario = new Autenticar(Guid.NewGuid(), AutenticarUsuario!.Email,AutenticarUsuario!.Senha);
+        var NovoUsuario = new Dados_App.Modelo.Usuario { Id = Guid.NewGuid(), Email = AutenticarUsuario!.Email, Senha = AutenticarUsuario!.Senha };
 
-        AvisoSnack(StringsUtil.CadastradoSucesso, Colors.White);
+        await casoUso.Gravar(NovoUsuario).ContinueWith(it => {
+
+            if (it.IsCompletedSuccessfully)
+            {
+                AvisoSnack(StringsUtil.CadastradoSucesso, Colors.White);
+            }
+            else
+            {
+                AvisoSnack(StringsUtil.SalvoErro, Colors.LightCoral);
+            }
+        });
+
+        
     }
 
     async Task AutenticarComBiometriaAsync()

@@ -9,7 +9,6 @@ public class HttpClientServico : IHttpClientServico, IDisposable
     {
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri("https://api.exemplo.com/")
         };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
@@ -44,7 +43,8 @@ public class HttpClientServico : IHttpClientServico, IDisposable
         response.EnsureSuccessStatusCode();
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<T>(responseContent)!;
+        var retorno = JsonSerializer.Deserialize<T>(responseContent)!;
+        return retorno;
     }
 
     public async Task<T> PutAsync<T>(string uri, object data)

@@ -3,19 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6374D77-D8E5-4588-B867-63F3306DF037}|..\\Api-Lembrete\\Api-Lembrete.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\api-lembrete\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\desafio-movisis\\viewmodels\\autenticarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14FBAC2D-D5D8-4C94-8165-2A28FDCABDB3}|DESAFIO-MOVISIS.csproj|solutionrelative:viewmodels\\autenticarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6374D77-D8E5-4588-B867-63F3306DF037}|..\\Api-Lembrete\\Api-Lembrete.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\api-lembrete\\controllers\\lembretescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE88EA84-3A08-47E2-B0BB-A5797A217A72}|..\\Dados-App\\Dados-App.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\dados-app\\servicos\\httpclientservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6374D77-D8E5-4588-B867-63F3306DF037}|..\\Api-Lembrete\\Api-Lembrete.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\api-lembrete\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6374D77-D8E5-4588-B867-63F3306DF037}|..\\Api-Lembrete\\Api-Lembrete.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\api-lembrete\\controllers\\tokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6374D77-D8E5-4588-B867-63F3306DF037}|..\\Api-Lembrete\\Api-Lembrete.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\api-lembrete\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE88EA84-3A08-47E2-B0BB-A5797A217A72}|..\\Dados-App\\Dados-App.csproj|c:\\users\\jarde\\documents\\desafio movisis\\desafio-movisis\\dados-app\\util\\constates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,67 +44,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LembretesController.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\LembretesController.cs",
-              "RelativeDocumentMoniker": "..\\Api-Lembrete\\Controllers\\LembretesController.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\LembretesController.cs",
-              "RelativeToolTip": "..\\Api-Lembrete\\Controllers\\LembretesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Constates.cs",
+              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Util\\Constates.cs",
+              "RelativeDocumentMoniker": "..\\Dados-App\\Util\\Constates.cs",
+              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Util\\Constates.cs",
+              "RelativeToolTip": "..\\Dados-App\\Util\\Constates.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T20:42:00.689Z",
+              "WhenOpened": "2025-02-01T18:13:57.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\UsuariosController.cs",
-              "RelativeDocumentMoniker": "..\\Api-Lembrete\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\UsuariosController.cs",
-              "RelativeToolTip": "..\\Api-Lembrete\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAUAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "HttpClientServico.cs",
+              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Servicos\\HttpClientServico.cs",
+              "RelativeDocumentMoniker": "..\\Dados-App\\Servicos\\HttpClientServico.cs",
+              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Dados-App\\Servicos\\HttpClientServico.cs",
+              "RelativeToolTip": "..\\Dados-App\\Servicos\\HttpClientServico.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T20:41:39.317Z",
+              "WhenOpened": "2025-02-01T14:52:52.297Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GlobalUsings.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\GlobalUsings.cs",
-              "RelativeDocumentMoniker": "..\\Api-Lembrete\\GlobalUsings.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\GlobalUsings.cs",
-              "RelativeToolTip": "..\\Api-Lembrete\\GlobalUsings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "AutenticarViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\AutenticarViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\AutenticarViewModel.cs",
+              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\DESAFIO-MOVISIS\\ViewModels\\AutenticarViewModel.cs \u2B24",
+              "RelativeToolTip": "ViewModels\\AutenticarViewModel.cs \u2B24",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAFoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T20:30:18.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TokenController.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\TokenController.cs",
-              "RelativeDocumentMoniker": "..\\Api-Lembrete\\Controllers\\TokenController.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Controllers\\TokenController.cs",
-              "RelativeToolTip": "..\\Api-Lembrete\\Controllers\\TokenController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T20:29:17.472Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Api-Lembrete\\Program.cs",
-              "ToolTip": "C:\\Users\\jarde\\Documents\\Desafio Movisis\\DESAFIO-MOVISIS\\Api-Lembrete\\Program.cs",
-              "RelativeToolTip": "..\\Api-Lembrete\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T20:22:04.506Z",
+              "WhenOpened": "2025-02-01T14:45:59.997Z",
               "EditorCaption": ""
             }
           ]

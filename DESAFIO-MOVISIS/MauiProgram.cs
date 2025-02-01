@@ -1,8 +1,4 @@
-﻿using DotNetEnv;
-using Microsoft.Extensions.Configuration;
-using System.Reflection;
-
-namespace DESAFIO_MOVISIS;
+﻿namespace DESAFIO_MOVISIS;
 
 public static class MauiProgram
 {
@@ -18,6 +14,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
+        builder.Services.AddSingleton<IBiometric>(BiometricAuthenticationService.Default);
+        builder.Services.AddScoped<UsuarioCasoUso>();
         builder.Services.AddTransient<IDataStore, DataBaseAsync>();
         builder.Services.AddTransient<AutenticarPage>();
         builder.Services.AddTransient<IniciarPage>();
@@ -25,7 +23,8 @@ public static class MauiProgram
         builder.Services.AddTransient<AutenticarViewModel>();
         builder.Services.AddTransient<IniciarViewModel>();
         builder.Services.AddTransient<CadastrarLembreteViewModel>();
-        builder.Services.AddSingleton<IBiometric>(BiometricAuthenticationService.Default);
+        builder.Services.AddTransient<IHttpClientServico, HttpClientServico>();
+        builder.Services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
 
         Env.Load();
 

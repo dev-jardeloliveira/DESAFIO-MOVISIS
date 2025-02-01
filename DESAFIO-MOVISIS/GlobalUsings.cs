@@ -17,8 +17,8 @@ global using Plugin.Maui.Calendar.Models;
 global using System.Globalization;
 global using System.Text.Json;
 global using FluentValidation;
-global using DESAFIO_MOVISIS.Validators;
 
+global using DESAFIO_MOVISIS.Validators;
 global using DESAFIO_MOVISIS.ViewModels;
 global using DESAFIO_MOVISIS.Pages;
 global using DESAFIO_MOVISIS.Extensions;
@@ -32,3 +32,10 @@ global using DESAFIO_MOVISIS.Components;
 global using DESAFIO_MOVISIS.Services;
 global using DESAFIO_MOVISIS.Response;
 global using DESAFIO_MOVISIS.Converts;
+
+global using Negocio_App.CasoUso;
+
+
+global using Dados_App.Repositorios;
+global using Dados_App.Servicos;
+global using DotNetEnv;

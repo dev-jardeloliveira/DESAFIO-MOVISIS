@@ -63,6 +63,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Dados-App\Dados-App.csproj" />
+	  <ProjectReference Include="..\Negocio-App\Negocio-App.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Components\LoadingComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -12,6 +12,16 @@ public static class UsuarioMapper
         };
     }
 
+    public static Dados_App.Modelo.Usuario ToDados(Usuario usuario)
+    {
+        return new Dados_App.Modelo.Usuario
+        {
+            Id = Guid.TryParse(usuario.Guid, out Guid resultado)?resultado:Guid.NewGuid(),
+            Email = usuario.Email!,
+            Senha = usuario.Senha!
+        };
+    }
+
     public static UsuarioDto ToDto(Usuario usuario)
     {
         return new UsuarioDto

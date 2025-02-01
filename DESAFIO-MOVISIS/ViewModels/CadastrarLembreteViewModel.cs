@@ -1,7 +1,7 @@
 ﻿namespace DESAFIO_MOVISIS.ViewModels;
 
 public partial class CadastrarLembreteViewModel : ObservableObject
-{
+{   
     private LembreteValida regasValidacao;
     private IDataStore dataStore;
     private LoadingComponent loadingComponent = new();

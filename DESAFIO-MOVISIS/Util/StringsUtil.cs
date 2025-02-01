@@ -3,6 +3,7 @@
 public class StringsUtil
 {
     public const string Entrar = "Entrar";
+    public const string EntrarErro = "E-mail e ou senha incorretos!";
     public const string Cadastrar = "Cadastrar";
     public const string NCadastrar = "Não é cadastrado?";
     public const string SCadastrar = "Já sou cadastrado, quero entrar.";
