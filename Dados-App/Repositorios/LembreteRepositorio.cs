@@ -9,23 +9,27 @@ public class LembreteRepositorio : ILembreteRepositorio
         this.httpClientServico = httpClientServico;
     }
 
-    public Task<string> Alterar(Lembrete lembrete)
+    public Task<string> Alterar(Lembrete lembrete, string token)
     {
-        return httpClientServico.PutAsync<string>("lembrete", lembrete);
+        httpClientServico.SetToken(token);
+        return httpClientServico.PutAsync<string>("/lembrete", lembrete);
     }
 
-    public Task<string> Excluir(int id)
+    public Task<string> Excluir(Guid guid, string token)
     {
-        return httpClientServico.DeleteAsync<string>($"lembrete/{id}");
+        httpClientServico.SetToken(token);
+        return httpClientServico.DeleteAsync<string>($"/lembrete/{guid}");
     }
 
-    public Task<string> Gravar(Lembrete lembrete)
+    public Task<string> Gravar(Lembrete lembrete, string token)
     {
-        return httpClientServico.PostAsync<string>("lembrete", lembrete);
+        httpClientServico.SetToken(token);
+        return httpClientServico.PostAsync<string>("/lembrete", lembrete);
     }
 
-    public Task<List<Lembrete>> Todos()
+    public Task<List<Lembrete>> Todos(string token)
     {
-        return httpClientServico.GetAsync<List<Lembrete>>("");
+        httpClientServico.SetToken(token);
+        return httpClientServico.GetAsync<List<Lembrete>>("/lembrete");
     }
 }

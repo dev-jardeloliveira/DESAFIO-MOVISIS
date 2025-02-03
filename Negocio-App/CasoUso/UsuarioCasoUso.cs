@@ -1,7 +1,4 @@
-﻿using Dados_App.Modelo;
-using Dados_App.Repositorios;
-
-namespace Negocio_App.CasoUso;
+﻿namespace Negocio_App.CasoUso;
 
 public class UsuarioCasoUso
 {

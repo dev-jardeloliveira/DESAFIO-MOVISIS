@@ -16,6 +16,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IBiometric>(BiometricAuthenticationService.Default);
         builder.Services.AddScoped<UsuarioCasoUso>();
+        builder.Services.AddScoped<LembreteCasoUso>();
         builder.Services.AddTransient<IDataStore, DataBaseAsync>();
         builder.Services.AddTransient<AutenticarPage>();
         builder.Services.AddTransient<IniciarPage>();
@@ -25,6 +26,7 @@ public static class MauiProgram
         builder.Services.AddTransient<CadastrarLembreteViewModel>();
         builder.Services.AddTransient<IHttpClientServico, HttpClientServico>();
         builder.Services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+        builder.Services.AddTransient<ILembreteRepositorio, LembreteRepositorio>();
 
         Env.Load();
 
