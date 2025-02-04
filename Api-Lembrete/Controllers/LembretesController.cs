@@ -13,7 +13,7 @@ public class LembretesController : ControllerBase
     }
 
     [HttpGet("{idUsuario}")]
-    public async Task<List<Lembrete>?> Get(Guid idUsuario)
+    public async Task<List<Lembrete>?> GetAll(Guid idUsuario)
     {
         return await casoUso.Filtrar(idUsuario);
     }

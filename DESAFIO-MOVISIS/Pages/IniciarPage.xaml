@@ -32,87 +32,114 @@
     </Shell.TitleView>
 
     <Grid>
-        <controls:Calendar
-            Grid.Row="0"
-            Padding="10"
-            AnimateCalendar="True"
-            ArrowsBorderColor="{StaticResource Gray300}"
-            ArrowsBorderWidth="0.1"
-            CalendarLayout="{Binding LayoutWeek}"
-            Culture="{Binding Cultura}"
-            Day="{Binding DataHoraAtual.Day}"
-            Events="{Binding eventos}"
-            EventsScrollViewVisible="True"
-            FooterArrowVisible="False"
-            FooterSectionVisible="False"
-            HorizontalOptions="Fill"
-            Month="{Binding DataHoraAtual.Month}"
-            SelectedDateColor="{StaticResource Primary}"
-            ShowYearPicker="False"
-            SwipeLeftCommand="{Binding AdicionarNovoEventoCommand}"
-            TodayFillColor="{StaticResource Gray100}"
-            TodayOutlineColor="{StaticResource Transparent}"
-            VerticalOptions="Fill"
-            WeekViewUnit="MonthName"
-            Year="{Binding DataHoraAtual.Year}">
 
-            <controls:Calendar.EventTemplate>
-                <DataTemplate>
-                    <Grid
-                        Margin="0,15,0,0"
-                        Padding="10"
-                        BackgroundColor="{StaticResource WhiteSmoke}"
-                        ColumnDefinitions="5,*,10"
-                        ColumnSpacing="15"
-                        HorizontalOptions="Fill"
-                        RowDefinitions="*,*,*"
-                        VerticalOptions="Fill">
+        <VerticalStackLayout>
+            <controls:Calendar
+                Grid.Row="0"
+                Padding="10"
+                AnimateCalendar="True"
+                ArrowsBorderColor="{StaticResource Gray300}"
+                ArrowsBorderWidth="0.1"
+                CalendarLayout="{Binding LayoutWeek}"
+                Culture="{Binding Cultura}"
+                Day="{Binding DataHoraAtual.Day}"
+                Events="{Binding eventos}"
+                EventsScrollViewVisible="True"
+                FooterArrowVisible="False"
+                FooterSectionVisible="False"
+                HorizontalOptions="Fill"
+                Month="{Binding DataHoraAtual.Month}"
+                SelectedDateColor="{StaticResource Primary}"
+                ShowYearPicker="False"
+                TodayFillColor="{StaticResource Gray100}"
+                TodayOutlineColor="{StaticResource Transparent}"
+                VerticalOptions="Fill"
+                WeekViewUnit="MonthName"
+                Year="{Binding DataHoraAtual.Year}">
 
-                        <BoxView
-                            Grid.RowSpan="3"
-                            Grid.Column="0"
-                            BackgroundColor="{StaticResource Primary}"
-                            WidthRequest="5" />
+                <controls:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            BackgroundColor="{StaticResource Primary}"
+                                            Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:IniciarViewModel}}, Path=EditarEventoCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Editar" />
 
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            HeightRequest="15"
-                            Text="x"
-                            TextColor="{StaticResource Black}"
-                            WidthRequest="15" />
+                                        <SwipeItem
+                                            BackgroundColor="{StaticResource Gray100}"
+                                            Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:IniciarViewModel}}, Path=RemoverEventoCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Excluir" />
 
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            FontSize="Medium"
-                            LineBreakMode="WordWrap"
-                            Text="{Binding Titulo}" />
 
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            FontSize="Small"
-                            LineBreakMode="WordWrap"
-                            Text="{Binding Descricao}" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid
+                                    Margin="0,15,0,0"
+                                    Padding="10"
+                                    BackgroundColor="{StaticResource WhiteSmoke}"
+                                    ColumnDefinitions="5,*,*"
+                                    ColumnSpacing="15"
+                                    HorizontalOptions="Fill"
+                                    RowDefinitions="AUTO,AUTO,AUTO"
+                                    VerticalOptions="Fill">
+                                    <BoxView
+                                        Grid.RowSpan="5"
+                                        Grid.Column="0"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        WidthRequest="5" />
 
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="Small"
-                            LineBreakMode="WordWrap"
-                            Text="{Binding Vencimento}" />
-                    </Grid>
-                </DataTemplate>
-            </controls:Calendar.EventTemplate>
-        </controls:Calendar>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding titulo}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="Small"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding descricao}" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="Small"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding vencimento, StringFormat='{0:dd/MM/yyyy}'}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        FontSize="Small"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding hora}" />
+
+                                </Grid>
+                            </SwipeView>
+                        </Grid>
+
+                    </DataTemplate>
+                </controls:Calendar.EventTemplate>
+
+            </controls:Calendar>
+
+        </VerticalStackLayout>
+
 
         <toolkit:SemanticOrderView>
             <Button
                 Grid.Row="2"
                 Margin="10"
-                Command="{Binding AdicionarNovoEventoCommand}"
+                BackgroundColor="{Binding CorDeFundoBotao}"
+                Command="{Binding AdicionarNovoEvento}"
                 CornerRadius="100"
                 FontSize="Large"
                 HeightRequest="50"
@@ -121,5 +148,7 @@
                 VerticalOptions="EndAndExpand"
                 WidthRequest="50" />
         </toolkit:SemanticOrderView>
+
+
     </Grid>
 </ContentPage>

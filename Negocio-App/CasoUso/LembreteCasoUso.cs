@@ -9,7 +9,7 @@ public class LembreteCasoUso
         this.repositorio = repositorio;
     }
 
-    public Task<string> Alterar(Lembrete lembrete, string token)
+    public Task<string> Alterar(LembreteResponse lembrete, string token)
     {
         return repositorio.Alterar(lembrete, token);
     }
@@ -19,13 +19,13 @@ public class LembreteCasoUso
         return repositorio.Excluir(guid, token);
     }
 
-    public Task<string> Gravar(Lembrete lembrete, string token)
+    public Task<string> Gravar(LembreteResponse lembrete, string token)
     {
         return repositorio.Gravar(lembrete, token);
     }
 
-    public Task<List<Lembrete>> Todos(string token)
+    public Task<List<LembreteResponse>> Todos(string token, Guid idUsuario)
     {
-        return repositorio.Todos(token);
+        return repositorio.Todos(token, idUsuario);
     }
 }

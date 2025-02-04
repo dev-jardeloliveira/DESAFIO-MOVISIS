@@ -15,6 +15,8 @@ public class StringsUtil
     public const string CadastradoSucesso = "Cadastrado com sucesso!";
     public const string SalvoSucesso = "Salvo com sucesso!";
     public const string SalvoErro = "Não foi possivel salvar. Verifique os dados digitado e tente novamente.";
+    public const string ExcluirSucesso = "Excluido com sucesso!";
+    public const string ExcluirErro = "Não foi possivel excluir. Tente novamente, mais tarde.";
     public const string Sucesso = "Sucesso!";
     public const string Entendi = "Entendi";
 }

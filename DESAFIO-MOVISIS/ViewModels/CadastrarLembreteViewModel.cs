@@ -1,14 +1,18 @@
 ﻿namespace DESAFIO_MOVISIS.ViewModels;
 
-public partial class CadastrarLembreteViewModel : ObservableObject
+public partial class CadastrarLembreteViewModel : ObservableObject, IQueryAttributable
 {   
+    private readonly LembreteCasoUso casoUso;
     private LembreteValida regasValidacao;
     private IDataStore dataStore;
     private LoadingComponent loadingComponent = new();
     private string base64 {  get; set; }
-
+    private bool isAlterar = false;
     [ObservableProperty]
     private bool isErro = false;
+
+    [ObservableProperty]
+    private bool isAnexo = false;
 
     [ObservableProperty]
     private string nomeDoArquivo = string.Empty;
@@ -16,12 +20,14 @@ public partial class CadastrarLembreteViewModel : ObservableObject
     [ObservableProperty]
     private Lembrete lembrete = new();
 
-    public CadastrarLembreteViewModel(IDataStore dataStore)
+    public CadastrarLembreteViewModel(IDataStore dataStore, LembreteCasoUso casoUso)
     {
+        regasValidacao = new LembreteValida();
         this.dataStore = dataStore;
+        this.casoUso = casoUso;
         Lembrete.Vencimento = DateTime.Now;
         Lembrete.Hora = TimeSpan.FromHours(DateTime.Now.Hour);
-        regasValidacao = new LembreteValida();
+
     }
 
     [RelayCommand]
@@ -53,7 +59,32 @@ public partial class CadastrarLembreteViewModel : ObservableObject
         }
         IsErro = false;
         await EnviarImagem();
-        await SinalDeProcessamento(await dataStore.CreateUniqueAsync<Lembrete>(Lembrete));
+
+        var usuario = await this.dataStore.SingleAsync<Usuario>();
+        Lembrete.IdUsuario = usuario.Guid;
+        var mapperLembrete = LembreteMapper.MapearParaLembreteDados(Lembrete);
+        if (isAlterar)
+        {
+          await SinalDeProcessamento(await casoUso.Alterar(mapperLembrete, usuario.Token!));
+        }
+        else
+        {
+          await SinalDeProcessamento(await casoUso.Gravar(mapperLembrete, usuario.Token!));
+
+        }
+    }
+
+    [RelayCommand]
+    private async Task AbrirAnexo()
+    {
+        if (Uri.TryCreate(Lembrete.Anexo, UriKind.Absolute, out var uri))
+        {
+            await Launcher.OpenAsync(uri);
+        }
+        else
+        {
+            Console.WriteLine("URL inválida.");
+        }
     }
 
     private void AvisoSnack(string mensagem, Color? color, string acaoText = "")
@@ -68,14 +99,14 @@ public partial class CadastrarLembreteViewModel : ObservableObject
         snackbar.Show();
     }
 
-    private async Task SinalDeProcessamento(int resultado)
+    private async Task SinalDeProcessamento(string resultado)
     {        
         var currentPage = Application.Current?.MainPage as Page;
         loadingComponent = new LoadingComponent();
         currentPage?.ShowPopup(loadingComponent);
         await Task.Delay(TimeSpan.FromSeconds(3));
         loadingComponent.Close();
-        if (resultado == 1)
+        if (resultado == "Sucesso")
         {
             AvisoSnack(StringsUtil.SalvoSucesso, Colors.White, StringsUtil.Entendi);
         }
@@ -84,5 +115,19 @@ public partial class CadastrarLembreteViewModel : ObservableObject
             AvisoSnack(StringsUtil.SalvoErro, Colors.LightCoral, StringsUtil.Entendi);
         }
 
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        isAlterar = true;
+        
+        Lembrete = (Lembrete)query["Lembrete"];
+        OnPropertyChanged("Lembrete");
+
+        if (!string.IsNullOrEmpty(Lembrete.Anexo))
+        {
+            if (Uri.TryCreate(Lembrete.Anexo, UriKind.Absolute, out var uri))
+                IsAnexo = true;
+        }
     }
 }

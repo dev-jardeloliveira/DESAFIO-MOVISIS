@@ -31,8 +31,8 @@ public partial class AutenticarViewModel : ObservableObject
     {
         this.casoUso = casoUso;
         this.dataStore = dataStore;
-
-        AutenticarComBiometriaAsync().ConfigureAwait(false);
+        SinalDeProcessamento(LoginAutomatico).ConfigureAwait(true);
+        //AutenticarComBiometriaAsync().ConfigureAwait(false);       
     }
 
     [RelayCommand]
@@ -79,11 +79,11 @@ public partial class AutenticarViewModel : ObservableObject
     {
         await casoUso.Verificar(dadosDeEntrada).ContinueWith(async it =>
         {
-
+            var resultado = it.Result;
             if (it.IsCompletedSuccessfully)
             {
-                usuario.Token = it?.Result?.token;
-                usuario.Guid = it?.Result?.id;
+                usuario.Token = resultado.token;
+                usuario.Guid = resultado.id;
                 await this.dataStore.CreateUniqueAsync<Usuario>(usuario);
 
                 await Shell.Current.GoToAsync("//iniciar");
@@ -154,16 +154,25 @@ public partial class AutenticarViewModel : ObservableObject
         
     }
 
+    async Task LoginAutomatico()
+    {
+        Usuario usuarioCadastrado = await this.dataStore.SingleAsync<Usuario>();
+
+        if (string.IsNullOrEmpty(usuarioCadastrado?.Email) && string.IsNullOrEmpty(usuarioCadastrado?.Senha))
+            return;
+
+        var dadosDeEntrada = UsuarioMapper.ToDados(usuarioCadastrado!);
+        await VerificarApi(usuarioCadastrado!, dadosDeEntrada);
+    }
+
     async Task AutenticarComBiometriaAsync()
     {
         await Task.Delay(TimeSpan.FromSeconds(15));
 
-        var usuario = await this.dataStore.AllAsync<Usuario>();
+        Usuario usuarioCadastrado = await this.dataStore.SingleAsync<Usuario>();
 
-        if (usuario?.Count() < 1)
+        if(string.IsNullOrEmpty(usuarioCadastrado?.Email) && string.IsNullOrEmpty(usuarioCadastrado?.Senha))
             return;
-
-        var usuarioCadastrado = usuario?.FirstOrDefault();
 
         var status = await BiometricAuthenticationService.Default.GetAuthenticationStatusAsync();
 
@@ -203,5 +212,6 @@ public partial class AutenticarViewModel : ObservableObject
         });       
             
     }
+
 
 }

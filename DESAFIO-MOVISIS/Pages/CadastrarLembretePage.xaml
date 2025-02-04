@@ -131,6 +131,15 @@
                         Text="Procurar" />
                 </Grid>
             </Border>
+            <Label
+                FontSize="14"
+                IsVisible="{Binding IsAnexo}"
+                Text="Exibir anexo"
+                TextColor="{StaticResource Primary}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AbrirAnexoCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
 
             <Button
                 Margin="0,10,0,0"

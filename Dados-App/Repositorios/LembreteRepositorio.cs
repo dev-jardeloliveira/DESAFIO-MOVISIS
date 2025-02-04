@@ -9,27 +9,27 @@ public class LembreteRepositorio : ILembreteRepositorio
         this.httpClientServico = httpClientServico;
     }
 
-    public Task<string> Alterar(Lembrete lembrete, string token)
+    public Task<string> Alterar(LembreteResponse lembrete, string token)
     {
         httpClientServico.SetToken(token);
-        return httpClientServico.PutAsync<string>("/lembrete", lembrete);
+        return httpClientServico.PutAsync<string>($"{Constates.EndPoint}/lembretes", lembrete);
     }
 
     public Task<string> Excluir(Guid guid, string token)
     {
         httpClientServico.SetToken(token);
-        return httpClientServico.DeleteAsync<string>($"/lembrete/{guid}");
+        return httpClientServico.DeleteAsync<string>($"{Constates.EndPoint}/lembretes/{guid}");
     }
 
-    public Task<string> Gravar(Lembrete lembrete, string token)
+    public Task<string> Gravar(LembreteResponse lembrete, string token)
     {
         httpClientServico.SetToken(token);
-        return httpClientServico.PostAsync<string>("/lembrete", lembrete);
+        return httpClientServico.PostAsync<string>($"{Constates.EndPoint}/lembretes", lembrete);
     }
 
-    public Task<List<Lembrete>> Todos(string token)
+    public Task<List<LembreteResponse>> Todos(string token, Guid idUsuario)
     {
         httpClientServico.SetToken(token);
-        return httpClientServico.GetAsync<List<Lembrete>>("/lembrete");
+        return httpClientServico.GetAsync<List<LembreteResponse>>($"{Constates.EndPoint}/lembretes/{idUsuario}");
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DESAFIO_MOVISIS;
+﻿using Plugin.LocalNotification;
+
+namespace DESAFIO_MOVISIS;
 
 public static class MauiProgram
 {
@@ -7,6 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseLocalNotification()
             .UseMauiCommunityToolkit()            
             .ConfigureFonts(fonts =>
             {
