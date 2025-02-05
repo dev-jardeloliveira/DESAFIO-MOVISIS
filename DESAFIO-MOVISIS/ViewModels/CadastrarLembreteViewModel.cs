@@ -72,6 +72,7 @@ public partial class CadastrarLembreteViewModel : ObservableObject, IQueryAttrib
           await SinalDeProcessamento(await casoUso.Gravar(mapperLembrete, usuario.Token!));
 
         }
+
     }
 
     [RelayCommand]
@@ -109,6 +110,7 @@ public partial class CadastrarLembreteViewModel : ObservableObject, IQueryAttrib
         if (resultado == "Sucesso")
         {
             AvisoSnack(StringsUtil.SalvoSucesso, Colors.White, StringsUtil.Entendi);
+            await Shell.Current.GoToAsync("iniciar");
         }
         else
         {
@@ -117,12 +119,13 @@ public partial class CadastrarLembreteViewModel : ObservableObject, IQueryAttrib
 
     }
 
+
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        isAlterar = true;
-        
         Lembrete = (Lembrete)query["Lembrete"];
         OnPropertyChanged("Lembrete");
+
+        isAlterar = !string.IsNullOrEmpty(Lembrete.Titulo);
 
         if (!string.IsNullOrEmpty(Lembrete.Anexo))
         {

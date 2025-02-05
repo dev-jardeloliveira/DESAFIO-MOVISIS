@@ -8,7 +8,7 @@ namespace DESAFIO_MOVISIS
     [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
     public class MainActivity : MauiAppCompatActivity
     {
-        private Timer _timer;
+        
         protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -24,21 +24,23 @@ namespace DESAFIO_MOVISIS
             }
            
         }
+
         private void IniciarNotificacoes()
         {
-            _timer = new Timer(EnviarNotificacao, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
+            Timer _timer = new Timer(EnviarNotificacao!, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
         }
+
         private async void EnviarNotificacao(object state)
         {
             var agora = DateTime.Now;
             var dataAtual = agora.Date;
-            var horaAtual = TimeSpan.FromHours(agora.Hour);
+            var horaAtual = new TimeSpan(agora.Hour, agora.Minute,0);
 
             var lembretes = LembretesNotificacao.ListaDeLemebretes.Where(it =>
-                it.Vencimento.HasValue &&
-                it.Vencimento.Value.Date == dataAtual &&
-                it.Hora == horaAtual.Subtract(TimeSpan.FromMinutes(30))
-            );
+                it.Vencimento.HasValue
+                && it.Vencimento.Value.Date == dataAtual
+                && it.Hora.HasValue
+                && it.Hora.Value.Subtract(TimeSpan.FromMinutes(30)) == horaAtual);
 
             if (lembretes.Count() > 0)
                 foreach (var it in lembretes)

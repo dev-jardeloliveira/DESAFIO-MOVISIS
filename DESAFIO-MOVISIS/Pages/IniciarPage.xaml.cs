@@ -2,9 +2,23 @@ namespace DESAFIO_MOVISIS.Pages;
 
 public partial class IniciarPage : ContentPage
 {
-	public IniciarPage(IniciarViewModel viewModel)
+    IniciarViewModel viewModel;
+
+    public IniciarPage(IniciarViewModel viewModel)
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel;
-	}
+        this.viewModel = viewModel;
+        this.BindingContext = viewModel;
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        viewModel.CarregarDadosCommand.Execute(this);
+        calendario.Loaded += Calendario_Loaded;
+    }
+
+    private async void Calendario_Loaded(object? sender, EventArgs e)
+    {
+        calendario.Events = viewModel.eventos;
+    }
 }

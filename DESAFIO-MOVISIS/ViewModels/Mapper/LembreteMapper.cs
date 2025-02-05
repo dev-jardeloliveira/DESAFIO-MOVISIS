@@ -57,6 +57,7 @@ public static class LembreteMapper
             Anexo = lembreteResponse.anexo
         };
     }
+
     public static LembreteDto MapearResponseParaDto(Dados_App.Modelo.LembreteResponse lembreteResponse)
     {
         return new LembreteDto
@@ -70,4 +71,5 @@ public static class LembreteMapper
             Anexo = lembreteResponse.anexo
         };
     }
+
 }

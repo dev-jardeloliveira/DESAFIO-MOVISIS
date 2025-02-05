@@ -8,7 +8,7 @@ public partial class IniciarViewModel : ObservableObject
 
     public EventCollection eventos { get; set; } = new();
 
-    private DataStores.Models.Usuario usuario { get; set; }
+    private Usuario usuario { get; set; }
 
     [ObservableProperty]
     private CultureInfo cultura = CultureUtil.cultureInfo;
@@ -34,22 +34,22 @@ public partial class IniciarViewModel : ObservableObject
 
     }
 
+    [RelayCommand]
     private async Task CarregarDados()
-    {
-       
+    {       
         List<Dados_App.Modelo.LembreteResponse> lembretes = await casoUso.Todos(usuario.Token!, Guid.Parse(usuario.Guid!));
 
         if (lembretes?.Count > 0)
         {
-            eventos = new EventCollection();
-            lembretes.GroupBy(it => it.vencimento.Date).ToList().ForEach(it =>
-            {
-                eventos.Add(it.Key, it.ToList());
-            });
+                eventos = new EventCollection();
+                lembretes.GroupBy(it => it.vencimento.Date).ToList().ForEach(it =>
+                {
+                    eventos.Add(it.Key, it.ToList());
+                });          
 
             lembretes.ForEach(it => LembretesNotificacao.ListaDeLemebretes.Add(LembreteMapper.MapearResponseParaDto(it)));
-        }
 
+        }
     }
     
     [RelayCommand]
@@ -74,7 +74,7 @@ public partial class IniciarViewModel : ObservableObject
     {
         var navigationParameter = new ShellNavigationQueryParameters
         {
-            { "Lembrete", new Lembrete() }
+            { "Lembrete", new Lembrete{  Vencimento = DateTime.Now, Hora = TimeSpan.FromHours(DateTime.Now.Hour)} }
         };
         Shell.Current.GoToAsync("cadastrar_lembrete",navigationParameter);
     }

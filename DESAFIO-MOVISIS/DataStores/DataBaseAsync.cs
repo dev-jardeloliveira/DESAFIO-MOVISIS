@@ -2,7 +2,7 @@
 
 public class DataBaseAsync : IDataStore
 {
-    private SQLiteAsyncConnection database;
+    private SQLiteAsyncConnection? database;
 
     private async Task Init()
     {

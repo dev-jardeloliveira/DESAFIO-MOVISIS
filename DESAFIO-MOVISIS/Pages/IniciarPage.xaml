@@ -34,7 +34,9 @@
     <Grid>
 
         <VerticalStackLayout>
+
             <controls:Calendar
+                x:Name="calendario"
                 Grid.Row="0"
                 Padding="10"
                 AnimateCalendar="True"
@@ -139,7 +141,7 @@
                 Grid.Row="2"
                 Margin="10"
                 BackgroundColor="{Binding CorDeFundoBotao}"
-                Command="{Binding AdicionarNovoEvento}"
+                Command="{Binding AdicionarNovoEventoCommand}"
                 CornerRadius="100"
                 FontSize="Large"
                 HeightRequest="50"
