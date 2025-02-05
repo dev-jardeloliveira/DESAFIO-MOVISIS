@@ -31,8 +31,8 @@ public partial class AutenticarViewModel : ObservableObject
     {
         this.casoUso = casoUso;
         this.dataStore = dataStore;
-        SinalDeProcessamento(LoginAutomatico).ConfigureAwait(true);
-        //AutenticarComBiometriaAsync().ConfigureAwait(false);       
+       // SinalDeProcessamento(LoginAutomatico).ConfigureAwait(true);
+        AutenticarComBiometriaAsync().ConfigureAwait(false);       
     }
 
     [RelayCommand]
@@ -121,7 +121,6 @@ public partial class AutenticarViewModel : ObservableObject
 
     async Task  CadastrarUsuario()
     {
-        await Task.Delay(TimeSpan.FromSeconds(5));
 
         if ( !AutenticarUsuario!.Email.IsValidarEmail() || !AutenticarUsuario!.Senha.IsValidarString(6))
         {
@@ -137,7 +136,9 @@ public partial class AutenticarViewModel : ObservableObject
             return;
         }
 
-        var NovoUsuario = new Dados_App.Modelo.Usuario { Id = Guid.NewGuid(), Email = AutenticarUsuario!.Email, Senha = AutenticarUsuario!.Senha.Criptografar() };
+        //Criptografar senha
+
+        var NovoUsuario = new Dados_App.Modelo.Usuario { Id = Guid.NewGuid(), Email = AutenticarUsuario!.Email, Senha = AutenticarUsuario!.Senha };
 
         await casoUso.Gravar(NovoUsuario).ContinueWith(it => {
 
